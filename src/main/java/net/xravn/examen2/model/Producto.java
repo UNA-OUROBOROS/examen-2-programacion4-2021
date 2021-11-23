@@ -3,13 +3,13 @@ package net.xravn.examen2.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Productos {
+public class Producto {
 
-    public Productos() {
+    public Producto() {
 
     }
 
-    public Productos(int id, String nombre, String descripcion, String URLImagen, double precio, int stock) {
+    public Producto(int id, String nombre, String descripcion, String URLImagen, double precio, int stock) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -73,8 +73,8 @@ public class Productos {
     private Integer id = -1;
     private String nombre = "";
     private String descripcion = "";
-    private String URLImagen = null;
+    private String URLImagen = "";
     private Double precio = 0.0;
-    private Integer stock;
+    private Integer stock = 0;
     private List<String> categorias = new ArrayList<>();
 }
