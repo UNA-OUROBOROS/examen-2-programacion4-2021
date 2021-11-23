@@ -1,12 +1,10 @@
-package cr.ac.una.proyectobases.controller.sql;
+package net.xravn.examen2.controller.sql;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 import net.xravn.examen2.controller.configuration.ConfigurationManager;
-import net.xravn.examen2.controller.sql.DBConectionController;
-
 
 public class DatabaseConnectionTest {
     @Test
