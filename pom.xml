@@ -17,7 +17,7 @@
 		<jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
 		<microprofile.version>3.0</microprofile.version>
 		<mockito-core.version>3.1.0</mockito-core.version>
-		<junit-jupiter.version>5.5.0</junit-jupiter.version>
+		<junit-jupiter.version>5.6.2</junit-jupiter.version>
 	</properties>
 
     <dependencies>
@@ -46,10 +46,15 @@
 			<version>${mockito-core.version}</version>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+          </dependency>
     </dependencies>
 
     <build>
-        <finalName>examen2P42021S2</finalName>
+        <finalName>examen2</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

@@ -1,4 +1,4 @@
-package net.xravn.examen2p42021s2;
+package net.xravn.examen2;
 
 import org.junit.jupiter.api.Test;
 
