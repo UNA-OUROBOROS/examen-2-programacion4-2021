@@ -2,7 +2,6 @@ package net.xravn.examen2;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,18 +10,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import net.xravn.examen2.cli.testBackend;
-import net.xravn.examen2.controller.GeneralController;
 import net.xravn.examen2.controller.configuration.ConfigurationManager;
-import net.xravn.examen2.model.Producto;
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
-		GeneralController controller = GeneralController.getInstance();
-		List<Producto> p = controller.getProductos();
-
-
 		// checks if it needs to run witouth spring boot
 		if (Arrays.asList(args).contains("--no-init")) {
 			System.out.println("Running without spring boot");
