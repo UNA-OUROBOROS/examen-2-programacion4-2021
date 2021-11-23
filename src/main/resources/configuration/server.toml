@@ -1,0 +1,21 @@
+[web_server]
+    port = 8080
+[database]
+    schema = "tienda_mascotas"
+    host = "localhost"
+    port = 3306
+    [database.credentials]
+        user = "admin"
+        password = "admin"
+[logging]
+    level = "DEBUG"
+    print_stack_trace = true
+[unit-tests]
+    ommit_db_tests = true
+    [unit-tests.database]
+        schema = "tienda_mascotas"
+        host = "localhost"
+        port = 3306
+        [unit-tests.database.credentials]
+            user = "admin"
+            password = "admin"

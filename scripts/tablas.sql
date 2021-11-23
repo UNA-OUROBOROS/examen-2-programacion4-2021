@@ -8,7 +8,7 @@ create table productos
     id_producto int          not null auto_increment primary key ,
     nombre      varchar(255) not null,
     descripcion varchar(500) not null,
-    url         VARCHAR(500) not null,
+    url_imagen  varchar(500) not null,
     precio      double       not null,
     stock       int          not null
 );

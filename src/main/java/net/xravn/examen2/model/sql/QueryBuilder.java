@@ -50,13 +50,23 @@ public class QueryBuilder {
     }
 
     public QueryBuilder values(String... values) {
-        this.query += "VALUES (";
+        // primero insertamos los nombres de las columnas
+        this.query += "(";
         for (int i = 0; i < values.length; i++) {
             this.query += values[i];
             if (i < values.length - 1) {
                 this.query += ", ";
             }
         }
+        this.query += ") VALUES (";
+        // luego usamos los parametros del query como prepared statement
+        for (int i = 0; i < values.length; i++) {
+            this.query += "?";
+            if (i < values.length - 1) {
+                this.query += ", ";
+            }
+        }
+        // y finalmente cerramos el query
         this.query += ") ";
         return this;
     }
@@ -66,8 +76,16 @@ public class QueryBuilder {
         return this;
     }
 
-    public QueryBuilder set(String column, String value) {
-        this.query += "SET " + column + " = " + value + " ";
+    public QueryBuilder set(String... columnas) {
+        // SET columna1 = ?, columna2 = ? ...
+        this.query += "SET ";
+        for (int i = 0; i < columnas.length; i++) {
+            this.query += columnas[i] + " = ?";
+            if (i < columnas.length - 1) {
+                this.query += ", ";
+            }
+        }
+        this.query += " ";
         return this;
     }
 

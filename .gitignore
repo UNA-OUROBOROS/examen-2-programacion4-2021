@@ -1,22 +1,10 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
-
-.apt_generated
+target/
 .classpath
-.factorypath
+.settings/
 .project
-.settings
-.springBeans
-.sts4-cache
 
-.idea
-*.iws
-*.iml
-*.ipr
+# vscode
+.vscode/
 
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# server config
+/server.toml
