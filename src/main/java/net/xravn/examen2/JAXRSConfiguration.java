@@ -1,4 +1,4 @@
-package net.xravn.examen2p42021s2;
+package net.xravn.examen2;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
