@@ -1,8 +1,6 @@
 package net.xravn.examen2.controller.sql;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Properties;
 
 import net.xravn.examen2.controller.configuration.ConfigurationManager;
 import net.xravn.examen2.model.sql.DBConnection;
