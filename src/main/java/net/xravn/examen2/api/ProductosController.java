@@ -49,15 +49,20 @@ public class ProductosController {
         } else if (producto.getStock() == null || producto.getStock() < 0) {
             respuesta.put("exitoso", false);
             respuesta.put("mensaje", "el stock del producto no es valido");
-        } else if (GeneralController.getInstance().agregarProducto(producto)) {
-            respuesta.put("exitoso", true);
-            respuesta.put("mensaje", "Producto agregado");
         } else {
-            respuesta.put("exitoso", false);
-            respuesta.put("mensaje", "error desconocido al agregar el producto");
-            // retornamos un error 500
-            return ResponseEntity.status(500).body(respuesta);
+            // no se pueden agregar categorias
+            producto.getCategorias().clear();
+            if (GeneralController.getInstance().agregarProducto(producto)) {
+                respuesta.put("exitoso", true);
+                respuesta.put("mensaje", "Producto agregado");
+            } else {
+                respuesta.put("exitoso", false);
+                respuesta.put("mensaje", "error desconocido al agregar el producto");
+                // retornamos un error 500
+                return ResponseEntity.status(500).body(respuesta);
+            }
         }
+
         if (respuesta.get("exitoso").equals(true)) {
             return ResponseEntity.ok(respuesta);
         } else {
@@ -81,6 +86,8 @@ public class ProductosController {
             respuesta.put("exitoso", false);
             respuesta.put("mensaje", "El precio del producto no es valido");
         } else {
+            // ponemos las categorias originales
+            producto.getCategorias().addAll(productoActual.getCategorias());
             producto.setId(productoActual.getId());
             producto.setStock(productoActual.getStock());
             if (GeneralController.getInstance().actualizarProducto(producto)) {
