@@ -88,8 +88,20 @@ public class QueryBuilder {
         this.query += " ";
         return this;
     }
+    public QueryBuilder join(String tabla) {
+        // SELECT * FROM table1 JOIN table2 ON table1.id = table2.id
+        this.query += "JOIN " + tabla + " ";
+        return this;
+    }
 
+    public QueryBuilder on(String condicion) {
+        // ON table1.id = table2.id
+        this.query += "ON " + condicion + " ";
+        return this;
+    }
     public String build() {
         return this.query;
     }
+
+
 }

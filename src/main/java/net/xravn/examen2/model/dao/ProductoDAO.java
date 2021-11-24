@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import net.xravn.examen2.model.CategoriaProducto;
 import net.xravn.examen2.model.Producto;
 import net.xravn.examen2.model.sql.DAO;
 import net.xravn.examen2.model.sql.QueryBuilder;
@@ -71,6 +72,9 @@ public class ProductoDAO extends DAO {
             p.setURLImagen((String) fila.get("url_imagen"));
             p.setPrecio((Double) fila.get("precio"));
             p.setStock((Integer) fila.get("stock"));
+            List<CategoriaProducto> categorias = new CategoriaProductoDAO().recuperarCategoriasPorIDProducto(p.getId());
+            p.getCategorias().addAll(categorias);
+
             return p;
         } catch (Exception e) {
             System.err.println("Error al recuperar usuario");

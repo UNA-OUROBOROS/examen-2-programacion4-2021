@@ -66,15 +66,15 @@ public class Producto {
         this.stock = stock;
     }
 
-    public List<String> getCategorias() {
+    public List<CategoriaProducto> getCategorias() {
         return categorias;
     }
-    
+
     private Integer id = -1;
     private String nombre = "";
     private String descripcion = "";
     private String URLImagen = "";
     private Double precio = 0.0;
     private Integer stock = 0;
-    private List<String> categorias = new ArrayList<>();
+    private List<CategoriaProducto> categorias = new ArrayList<>();
 }

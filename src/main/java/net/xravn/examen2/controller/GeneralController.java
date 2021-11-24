@@ -2,7 +2,9 @@ package net.xravn.examen2.controller;
 
 import java.util.List;
 
+import net.xravn.examen2.model.CategoriaProducto;
 import net.xravn.examen2.model.Producto;
+import net.xravn.examen2.model.dao.CategoriaProductoDAO;
 import net.xravn.examen2.model.dao.ProductoDAO;
 
 public class GeneralController {
@@ -24,6 +26,14 @@ public class GeneralController {
 
     public boolean actualizarProducto(Producto producto) {
         return new ProductoDAO().actualizarProducto(producto);
+    }
+
+    public List<CategoriaProducto> getCategorias() {
+        return new CategoriaProductoDAO().recuperarCategorias();
+    }
+
+    public CategoriaProducto getCategoria(Integer idCategoria) {
+        return new CategoriaProductoDAO().recuperarCategoria(idCategoria);
     }
 
     private static GeneralController instance;
