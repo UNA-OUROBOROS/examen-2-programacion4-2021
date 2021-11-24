@@ -55,6 +55,8 @@ public class ProductosController {
         } else {
             respuesta.put("exitoso", false);
             respuesta.put("mensaje", "error desconocido al agregar el producto");
+            // retornamos un error 500
+            return ResponseEntity.status(500).body(respuesta);
         }
         if (respuesta.get("exitoso").equals(true)) {
             return ResponseEntity.ok(respuesta);
@@ -87,6 +89,8 @@ public class ProductosController {
             } else {
                 respuesta.put("exitoso", false);
                 respuesta.put("mensaje", "error desconocido al actualizar el producto");
+                // retornamos un error 500
+                return ResponseEntity.status(500).body(respuesta);
             }
         }
 
