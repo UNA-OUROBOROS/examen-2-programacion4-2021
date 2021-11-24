@@ -82,14 +82,14 @@ public class CategoriaProductoDAO extends DAO {
     private static final String queryObtenerCategoriaProductoPorId //
             = new QueryBuilder() //
                     .select("*") //
-                    .from("categoria_producto") //
-                    .where("id_categoria_producto") //
+                    .from("categorias") //
+                    .where("id_categoria = ?") //
                     .build(); //
 
     private static final String queryObtenerCategoriasProducto //
             = new QueryBuilder() //
                     .select("*") //
-                    .from("categoria_producto") //
+                    .from("categorias") //
                     .build(); //
 
     private static final String queryRecuperarCategoriasporIDProducto //
