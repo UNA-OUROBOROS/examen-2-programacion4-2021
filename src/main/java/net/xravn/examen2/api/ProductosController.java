@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -96,4 +97,58 @@ public class ProductosController {
         }
     }
 
+    @PatchMapping("/productos/{id}")
+    public ResponseEntity<Map<String, Object>> modificarCantidadProducto(@PathVariable Integer id,
+            @RequestBody Map<String, Object> datos) {
+        Map<String, Object> respuesta = new HashMap<>();
+        Producto producto = GeneralController.getInstance().getProducto(id);
+        if (producto == null) {
+            respuesta.put("exitoso", false);
+            respuesta.put("mensaje", "El producto no existe");
+            return ResponseEntity.notFound().build();
+        } else {
+            // recuperamos la operacion
+            if (!datos.containsKey("operation")) {
+                respuesta.put("exitoso", false);
+                respuesta.put("mensaje", "La operacion es obligatoria {operation}");
+            } else if (!datos.containsKey("cantidad")) {
+                respuesta.put("exitoso", false);
+                respuesta.put("mensaje", "La cantidad es obligatoria {cantidad}");
+            } else {
+                String operation = (String) datos.get("operation");
+                Integer cantidad = (Integer) datos.get("cantidad");
+                switch (operation) {
+                case "agregar":
+                    producto.setStock(producto.getStock() + cantidad);
+                    break;
+                case "modificar":
+                    producto.setStock(cantidad);
+                    break;
+                case "restar":
+                    producto.setStock(producto.getStock() - cantidad);
+                    break;
+                default:
+                    respuesta.put("exitoso", false);
+                    respuesta.put("mensaje", "La operacion no es valida");
+                    return ResponseEntity.unprocessableEntity().body(respuesta);
+                }
+
+                if (GeneralController.getInstance().actualizarProducto(producto)) {
+                    respuesta.put("exitoso", true);
+                    respuesta.put("mensaje", "Producto actualizado");
+                } else {
+                    respuesta.put("exitoso", false);
+                    respuesta.put("mensaje", "error desconocido al actualizar el producto");
+                    // retornamos un error 500
+                    return ResponseEntity.status(500).body(respuesta);
+                }
+            }
+
+            if (respuesta.get("exitoso").equals(true)) {
+                return ResponseEntity.ok(respuesta);
+            } else {
+                return ResponseEntity.unprocessableEntity().body(respuesta);
+            }
+        }
+    }
 }
