@@ -18,7 +18,7 @@ public class Producto {
         this.stock = stock;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ public class Producto {
         this.URLImagen = URLImagen;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
@@ -58,7 +58,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
